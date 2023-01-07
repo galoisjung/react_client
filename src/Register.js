@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
-import Popup from './Popup';
 
 export const Register = (props) => {
     const [email, setEmail] = useState('');
@@ -9,8 +8,6 @@ export const Register = (props) => {
     const [name, setName] = useState('');
     const [passvar, setPassvar] = useState('');
     const [ID, setID] = useState('');
-    const [popup, setPopup] = useState({open: false, title: "", message: "", callback: false});
-    // const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
