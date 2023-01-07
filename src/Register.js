@@ -23,11 +23,13 @@ export const Register = (props) => {
             email: email
         }
         axios.post('http://localhost:5000/api/phishing/register',
-            JSON.stringify(data), {
+            {
+                data: JSON.stringify(data),
                 headers: {
                     "Content-Type": `application/json`,
-                },
-            })
+                }
+            }
+        )
             // .then((res) => {
             //     console.log(res);
             //   });
@@ -93,13 +95,15 @@ export const Register = (props) => {
                 {/* <label htmlFor="name">Name</label> */}
 
                 <label htmlFor="id">ID/PW</label>
-                <input value={ID} name="ID" onChange={(e) => setID(e.target.value)} type="ID" placeholder="ID" id="ID"/>
+                <input value={ID} name="ID" onChange={(e) => setID(e.target.value)} type="ID" placeholder="ID"
+                       id="ID"/>
                 <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="Password"
                        id="password" name="password"/>
                 <input style={{marginBottom: 20}} value={passvar} onChange={(e) => setPassvar(e.target.value)}
                        type="password" placeholder="Verify Password" id="passwordvar" name="passwordvar"/>
                 <label htmlFor="info">INFO</label>
-                <input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="Name"/>
+                <input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name"
+                       placeholder="Name"/>
                 <input value={email} name="email" onChange={(e) => setEmail(e.target.value)} type="email"
                        placeholder="e-mail" id="email"/>
                 {/* <label htmlFor="password">password</label> */}
