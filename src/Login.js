@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-// import logo from './logo.png';
 import axios from 'axios';
-// import Popup from './Popup';
 import {useCookies} from "react-cookie";
 
 export const Login = (props) => {
@@ -12,7 +10,6 @@ export const Login = (props) => {
     const [cookies, setCookie] = useCookies(['session_key'])
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(ID);
     }
 
     function onlogin(e) {
