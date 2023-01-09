@@ -23,7 +23,7 @@ export const Login = (props) => {
         axios.post('http://localhost:5000/api/phishing/login',
             JSON.stringify(data), {
                 headers: {
-                    "Content-Type": `application/json`,
+                    "Content-Type": "application/json",
                 },
             })
             .then((res) => {

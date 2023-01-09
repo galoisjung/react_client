@@ -24,7 +24,7 @@ export const Register = (props) => {
         }
         axios.post('http://localhost:5000/api/phishing/register',
             {
-                data: JSON.stringify(data),
+                data: data,
                 headers: {
                     "Content-Type": `application/json`,
                 }
