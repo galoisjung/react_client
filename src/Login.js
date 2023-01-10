@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import axios from 'axios';
 import {useCookies} from "react-cookie";
+import {useNavigate} from "react-router-dom";
 
 export const Login = (props) => {
     const [ID, setID] = useState('');
@@ -8,6 +9,7 @@ export const Login = (props) => {
     // const [popup, setPopup] = useState({open: false, title: "", message: "", callback: false});
     // const navigate = useNavigate()
     const [cookies, setCookie] = useCookies(['session_key'])
+    const navigate = useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault();
     }
@@ -32,7 +34,12 @@ export const Login = (props) => {
                     "session_key": res.data.session_key,
                     "user_id": ID
                 })
-            }).catch(function (e) {
+                console.log(res)
+            if (res.status === 200) {
+                alert("로그인 성공")
+                navigate("/hello")
+            }
+        }).catch(function (e) {
             console.log(e)
             if (e.request.status === 401) {
                 alert("입력하신 정보가 잘못되었습니다.")
@@ -55,14 +62,15 @@ export const Login = (props) => {
                     <input value={ID} onChange={(e) => setID(e.target.value)} type="ID" placeholder="ID" id="ID"
                            name="ID"/>
                     {/* <label htmlFor="password">password</label> */}
-                    <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********"
+                    <input value={pass} onChange={(e) => setPass(e.target.value)} type="password"
+                           placeholder="********"
                            id="password" name="password"/>
                     {/* <div> */}
                     {/* <button type="submit" onClick={() => props.onFormSwitch('login')}>Log In</button>  */}
                     <button type="submit" onClick={onlogin}>Log In</button>
                     {/* <button className="link-btn" onClick={() => props.onFormSwitch('register')}> */}
-                    <button className="link-btn" onClick={() => props.onFormSwitch('register')}>
-                        <text>Register</text>
+                    <button className="link-btn" onClick={() => window.location.href = "/register"}>
+                        <p>Register</p>
                     </button>
                     {/* <div> */}
                 </form>

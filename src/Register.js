@@ -110,7 +110,7 @@ export const Register = (props) => {
 
                 <button type="submit" onClick={onSubmit}>Submit</button>
             </form>
-            <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Back</button>
+            <button className="link-btn" onClick={() => window.location.href = '/'}>Back</button>
         </div>
     )
 }
