@@ -1,14 +1,19 @@
 import React, {useState} from "react";
 import axios from 'axios';
 import {useCookies} from "react-cookie";
+import {useOutletContext} from "react-router-dom";
+import {Login} from "./Login";
 
-
-export const Hello = (props) => {
-    const [cookies,, removeCookie] = useCookies(['session_key'])
-    axios.post('http://localhost:5000/api/phishing/check',
-        cookies["session_key"]).then((res) => {
-            console.log("success")
-    }).catch(function (e) {
+axios.defaults.withCredentials = true;
+export const Hello = () => {
+    const [cookies, , removeCookie] = useCookies(['session_key'])
+    axios.post('http://localhost:5000/api/phishing/check'
+        , cookies["session_key"], {
+            headers: {
+                "Content-Type": "application/json"
+                , "Connection": "keep-alive"
+            }
+        }).catch(function (e) {
         // alert("입력하신 정보가 잘못 되었습니다.")
         removeCookie('session_key')
 

@@ -25,7 +25,8 @@ export const Login = (props) => {
         axios.post('http://localhost:5000/api/phishing/login',
             JSON.stringify(data), {
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json"
+                    ,"Connection": "keep-alive"
                 },
             })
             .then((res) => {
@@ -37,7 +38,7 @@ export const Login = (props) => {
                 console.log(res)
             if (res.status === 200) {
                 alert("로그인 성공")
-                navigate("/hello")
+                navigate('hello')
             }
         }).catch(function (e) {
             console.log(e)
